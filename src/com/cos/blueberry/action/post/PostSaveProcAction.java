@@ -19,10 +19,12 @@ public class PostSaveProcAction implements Action {
 			return;
 		}
 
-		int id = Integer.parseInt(request.getParameter("id"));
+		int memberId = Integer.parseInt(request.getParameter("memberId"));
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
 
 		PostDao postDao = new PostDao();
-		int result = postDao.글삭제(id);
+		int result = postDao.글쓰기(memberId, title, content);
 
 		if (result == 1) {
 			response.sendRedirect("index.jsp");
